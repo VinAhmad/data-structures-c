@@ -8,7 +8,7 @@ struct Node
 {
     int angka;
     Node *next;
-    Node *prev;
+    Node *prev; 
 } *head, *tail;
 
 Node *createNode(int angka){
