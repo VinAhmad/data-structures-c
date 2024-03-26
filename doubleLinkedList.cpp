@@ -7,22 +7,24 @@
 struct Node
 {
     int angka;
+    char nama[100];
     Node *next;
     Node *prev; 
 } *head, *tail;
 
-Node *createNode(int angka){
+Node *createNode(int angka, const char *nama){
     Node *newNode = (Node*)malloc(sizeof(Node));
 
     newNode->angka = angka;
+    strcpy(newNode->nama, nama);
     newNode->next = NULL;
     newNode->prev = NULL;
 
     return newNode;
 }
 
-void pushHead(int angka){
-    Node *temp = createNode(angka);
+void pushHead(int angka, const char *nama){
+    Node *temp = createNode(angka, nama);
 
     if(!head){
         head = tail = temp;
@@ -33,8 +35,8 @@ void pushHead(int angka){
     }
 }
 
-void pushTail(int angka){
-    Node *temp = createNode(angka);
+void pushTail(int angka, const char *nama){
+    Node *temp = createNode(angka, nama);
 
     if(!head){
         head = tail = temp;
@@ -45,15 +47,15 @@ void pushTail(int angka){
     }
 }
 
-void pushMid(int angka){
-    Node *temp = createNode(angka);
+void pushMid(int angka, const char *nama){
+    Node *temp = createNode(angka, nama);
 
     if(!head){
         head = tail = temp;
     }else if(angka < head->angka){
-        pushHead(angka);
+        pushHead(angka, nama);
     }else if (angka > tail->angka){
-        pushTail(angka);
+        pushTail(angka, nama);
     }else{
         Node *curr = head;
         // Bandingkan sama angka yang mau kita masukin
@@ -129,7 +131,7 @@ void print(){
     Node *curr = head;
     while (curr != NULL)
     {
-        printf("%d -> ", curr->angka);
+        printf("%d %s -> ", curr->angka, curr->nama);
         curr = curr->next;
     }
     
@@ -142,10 +144,10 @@ int main(){
     // popHead();
     // popTail();
 
-    pushMid(7);
-    pushMid(9);
-    pushMid(8);
-    pushMid(10);
+    pushMid(7, "Budi");
+    pushMid(9, "Udin");
+    pushMid(8, "Kepin");
+    pushMid(10, "Asep");
 
     popMid(9);
 
