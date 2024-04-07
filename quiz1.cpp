@@ -209,7 +209,7 @@ int main(){
     removeSong("Song Title 2.5");
     removeSong("Song Title 4");
 
-    clearPlaylist();
+    // clearPlaylist();
 
     showPlaylist();
 
